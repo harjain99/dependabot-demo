@@ -1,15 +1,22 @@
----
 version: 2
+registries:
+  ecr-docker:
+    type: docker-registry
+    url: https://348878804585.dkr.ecr.us-east-2.amazonaws.com
+    username: ${{secrets.AWS_ACCESS_KEY_ID}}
+    password: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+
 updates:
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: "docker"
+    directory: "/containers"
+    registries:
+      - ecr-docker
     schedule:
       interval: "daily"
-  - package-ecosystem: npm
-    directory: "/javascript"
-    schedule:
-      interval: daily
-  - package-ecosystem: bundler
-    directory: "/ruby"
-    schedule:
-      interval: weekly
+      time: "16:00"
+      timezone: "EST"
+    ignore:
+      - dependency-name: '*'
+        update-types: ["version-update:semver-major"]
+    commit-message:
+      prefix: "[brightspot-cloud-tomcat]"
