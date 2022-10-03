@@ -13,7 +13,7 @@ updates:
       - ecr-docker
     schedule:
       interval: "daily"
-      time: "16:00"
+      time: "17:05"
       timezone: "EST"
     ignore:
       - dependency-name: '*'
