@@ -13,10 +13,10 @@ updates:
       - ecr-docker
     schedule:
       interval: "daily"
-      time: "17:05"
+      time: "14:40"
       timezone: "EST"
     ignore:
       - dependency-name: '*'
         update-types: ["version-update:semver-major"]
     commit-message:
-      prefix: "[brightspot-cloud-tomcat]"
+      prefix: "[bsp-tomcat]"
