@@ -5,6 +5,7 @@ registries:
     url: 242040583208.dkr.ecr.us-east-2.amazonaws.com
     username: ${{secrets.ECR_AWS_ACCESS_KEY_ID}}
     password: ${{secrets.ECR_AWS_SECRET_ACCESS_KEY}}
+    token: ${{secrets.ECR_AWS_SESSION_TOKEN}}
 
 updates:
   - package-ecosystem: "docker"
