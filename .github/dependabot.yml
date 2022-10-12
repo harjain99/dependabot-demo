@@ -1,0 +1,22 @@
+version: 1
+registries:
+  ecr-docker:
+    type: docker-registry
+    url: 242040583208.dkr.ecr.us-east-2.amazonaws.com
+    username: ${{secrets.ECR_AWS_ACCESS_KEY_ID}}
+    password: ${{secrets.ECR_AWS_SECRET_ACCESS_KEY}}
+
+updates:
+  - package-ecosystem: "docker"
+    directory: "/containers"
+    registries:
+      - ecr-docker
+    schedule:
+      interval: "daily"
+      time: "14:40"
+      timezone: "EST"
+    ignore:
+      - dependency-name: '*'
+        update-types: ["version-update:semver-major"]
+    commit-message:
+      prefix: "[bsp-tomcat]"
