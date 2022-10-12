@@ -2,7 +2,7 @@ version: 2
 registries:
   ecr-docker:
     type: docker-registry
-    url: 348878804585.dkr.ecr.us-east-2.amazonaws.com
+    url: 242040583208.dkr.ecr.us-east-2.amazonaws.com
     username: ${{secrets.ECR_AWS_ACCESS_KEY_ID}}
     password: ${{secrets.ECR_AWS_SECRET_ACCESS_KEY}}
 
