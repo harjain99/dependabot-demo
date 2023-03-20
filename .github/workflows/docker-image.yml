@@ -1,0 +1,37 @@
+name: Build Brightspot Release
+
+on: [push]
+
+env:
+  AWS_EC2_METADATA_DISABLED: true
+  REGISTRY: us-east4-docker.pkg.dev
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+
+      # Setup gcloud CLI
+      - uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_GCR_SECRET_KEY_PROD }}
+
+      # Setup gcloud CLI
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+
+      # Configure docker to use the gcloud command-line tool as a credential helper
+      - run: |
+          # Set up docker to authenticate
+          # via gcloud command-line tool.
+          gcloud auth configure-docker ${REGISTRY}
+      - name: Docker test
+        run: gcloud artifacts docker images list "us-east4-docker.pkg.dev/aerobic-lock-236714/opsdesk-test/web-go-basic"
