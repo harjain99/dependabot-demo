@@ -22,7 +22,7 @@ jobs:
       # Setup gcloud CLI
       - uses: google-github-actions/auth@v1
         with:
-          credentials_json: ${{ secrets.GCP_GCR_SECRET_KEY_PROD }}
+          credentials_json: ${{ secrets.GCP_GCR_SECRET_KEY }}
 
       # Setup gcloud CLI
       - name: Set up Cloud SDK
