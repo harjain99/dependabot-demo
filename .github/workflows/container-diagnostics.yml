@@ -11,8 +11,8 @@ jobs:
 
   build-and-deploy:
     runs-on: ubuntu-latest
-    steps:
 
+    steps:
     - uses: azure/login@v2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
