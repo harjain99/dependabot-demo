@@ -1,0 +1,24 @@
+name: example/opsdesk
+on:
+  push:
+    branches:
+      - 'ghtest/*'
+
+env:
+  PUSH: --push
+
+jobs:
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Configure ACR
+        run: |
+          az acr login -n opsdesk -t -o tsv --only-show-errors --query accessToken | helm registry login -u 00000000-0000-0000-0000-000000000000 --password-stdin opsdesk.azurecr.io
+          docker pull opsdesk.azurecr.io/opsdesk/example-har:release-1.5.5
+          docker push opsdesk.azurecr.io/opsdesk/example-har:release-1.5.5
