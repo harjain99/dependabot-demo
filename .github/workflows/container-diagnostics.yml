@@ -21,6 +21,6 @@ jobs:
 
       - name: Configure ACR
         run: |
-          az acr login -n opsdesk -t -o tsv --only-show-errors --query accessToken | helm registry login -u 00000000-0000-0000-0000-000000000000 --password-stdin opsdesk.azurecr.io
+          az acr login -n opsdesk
           docker pull opsdesk.azurecr.io/opsdesk/example-har:release-1.5.5
           docker push opsdesk.azurecr.io/opsdesk/example-har:release-1.5.5
