@@ -18,3 +18,14 @@ updates:
         update-types: ["version-update:semver-major", "version-update:semver-minor"]
     commit-message:
       prefix: "[bsp-tomcat]"
+
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major", "version-update:semver-minor" ] # ignores updates for major and minor versions
+    commit-message:
+      prefix: "[gradle-dependency]"
+

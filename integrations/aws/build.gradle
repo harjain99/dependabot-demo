@@ -1,0 +1,26 @@
+plugins {
+    id 'com.brightspot.java-core'
+}
+
+description = 'OpsDesk: AWS Integration'
+
+dependencies {
+    implementation project(':opsdesk-cloudresources')
+    implementation project(':opsdesk-core')
+    implementation 'com.psddev:cms-db'
+    implementation 'com.psddev:dari-aws'
+    implementation 'com.psddev:dari-db'
+    implementation 'com.psddev.component-lib:global-repeating-cron-task'
+    // implementation 'com.squareup.okhttp3:logging-interceptor'
+    implementation 'com.squareup.retrofit2:converter-gson'
+    implementation 'com.squareup.retrofit2:retrofit'
+    implementation 'software.amazon.awssdk:apache-client'
+    implementation 'software.amazon.awssdk:ec2'
+    implementation 'software.amazon.awssdk:iam'
+    implementation 'software.amazon.awssdk:kms'
+    implementation 'software.amazon.awssdk:s3'
+    implementation 'software.amazon.awssdk:secretsmanager'
+    implementation 'software.amazon.awssdk:sts'
+
+    sharedTest 'com.brightspot.shared-tests:pack-standard-backend-unit-tests'
+}

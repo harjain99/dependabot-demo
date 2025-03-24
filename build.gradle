@@ -1,0 +1,16 @@
+subprojects {
+    apply plugin: 'java'
+
+    dependencies {
+        implementation enforcedPlatform('com.google.cloud:libraries-bom:25.3.0')
+        implementation enforcedPlatform('software.amazon.awssdk:bom:2.17.76')
+        implementation enforcedPlatform('com.azure:azure-sdk-bom:1.2.25')
+    }
+
+    // needed so suppressions.xml file can be found
+    pluginManager.withPlugin('checkstyle', {
+        checkstyle {
+            configDirectory = rootProject.layout.projectDirectory.dir('etc/checkstyle')
+        }
+    })
+}

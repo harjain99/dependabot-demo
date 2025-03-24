@@ -1,0 +1,34 @@
+plugins {
+    id 'com.brightspot.java-core'
+}
+
+description = 'OpsDesk: Aws Eks Integration'
+
+dependencies {
+    implementation project(':opsdesk-aws')
+    implementation project(':opsdesk-cloudresources')
+    implementation project(':opsdesk-core')
+    implementation project(':opsdesk-github')
+    implementation project(':opsdesk-incidents')
+    implementation project(':opsdesk-kubernetes')
+    implementation 'com.amazonaws:aws-java-sdk-core'
+    implementation 'com.google.code.gson:gson'
+    implementation 'com.psddev:cms-db'
+    implementation 'com.psddev:dari-db'
+    implementation 'com.psddev.component-lib:global-repeating-cron-task'
+    implementation 'com.psddev.component-lib:util-unresolved-state'
+    implementation 'io.kubernetes:client-java'
+    implementation 'software.amazon.awssdk:acm'
+    implementation 'software.amazon.awssdk:apache-client'
+    implementation 'software.amazon.awssdk:ecr'
+    implementation 'software.amazon.awssdk:eks'
+    implementation 'software.amazon.awssdk:eventbridge'
+    implementation 'software.amazon.awssdk:iam'
+    implementation 'software.amazon.awssdk:kms'
+    implementation 'software.amazon.awssdk:sqs'
+    implementation 'software.amazon.awssdk:sts'
+    implementation 'software.amazon.awssdk:route53'
+    implementation 'software.amazon.awssdk:rds'
+
+    sharedTest 'com.brightspot.shared-tests:pack-standard-backend-unit-tests'
+}
