@@ -5,6 +5,9 @@ registries:
     url: 242040583208.dkr.ecr.us-east-2.amazonaws.com
     username: ${{secrets.ECR_AWS_ACCESS_KEY_ID}}
     password: ${{secrets.ECR_AWS_SECRET_ACCESS_KEY}}
+  brightspot-artifactory:
+    type: maven-repository
+    url: https://artifactory.psdops.com/public/
 
 updates:
   - package-ecosystem: "docker"
@@ -21,11 +24,17 @@ updates:
 
   - package-ecosystem: "gradle"
     directory: "/"
+    registries:
+      - brightspot-artifactory
     schedule:
       interval: "daily"
+    groups:
+      brightspot-dependencies:
+        patterns:
+          - "*"
     ignore:
       - dependency-name: "*"
         update-types: [ "version-update:semver-major", "version-update:semver-minor" ] # ignores updates for major and minor versions
     commit-message:
-      prefix: "[gradle-dependency]"
+      prefix: "[bsp-backend]"
 
