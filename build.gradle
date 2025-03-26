@@ -3,7 +3,7 @@ subprojects {
 
     dependencies {
         implementation enforcedPlatform('com.google.cloud:libraries-bom:25.3.0')
-        implementation enforcedPlatform('software.amazon.awssdk:bom:2.17.76')
+        implementation enforcedPlatform('software.amazon.awssdk:bom:2.18.0')
         implementation enforcedPlatform('com.azure:azure-sdk-bom:1.2.25')
     }
 
