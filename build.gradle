@@ -3,8 +3,8 @@ subprojects {
 
     dependencies {
         implementation enforcedPlatform('com.google.cloud:libraries-bom:25.3.0')
-        implementation enforcedPlatform('software.amazon.awssdk:bom:2.18.0')
-        implementation enforcedPlatform('com.azure:azure-sdk-bom:1.2.25')
+        implementation enforcedPlatform('software.amazon.awssdk:bom:2.18.41')
+        implementation enforcedPlatform('com.azure:azure-sdk-bom:1.2.32')
     }
 
     // needed so suppressions.xml file can be found
